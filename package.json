@@ -1,0 +1,35 @@
+{
+  "name": "array-to-events",
+  "version": "0.0.0",
+  "description": "Push a series of events to an emitter. Useful for testing.",
+  "license": "MIT",
+  "repository": "jamestalmage/array-to-events",
+  "author": {
+    "name": "James Talmage",
+    "email": "james@talmage.io",
+    "url": "github.com/jamestalmage"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && nyc --reporter=text --reporter=html ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "event",
+    "emitter",
+    "test",
+    "testing",
+    "array"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "events-to-array": "^1.0.2",
+    "nyc": "^6.1.1",
+    "xo": "^0.12.1"
+  }
+}
