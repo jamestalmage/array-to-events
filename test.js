@@ -14,7 +14,7 @@ test('sync', t => {
 		['bar', 4, 5, 6]
 	]);
 
-	t.same(t.context.events, [
+	t.deepEqual(t.context.events, [
 		['foo', 1, 2, 3],
 		['bar', 4, 5, 6]
 	]);
@@ -24,7 +24,7 @@ test.cb('immediate', t => {
 	t.plan(1);
 	fn(t.context, [['foo', 1, 2]], {delay: 'immediate'});
 	setTimeout(() => {
-		t.same(t.context.events, [['foo', 1, 2]]);
+		t.deepEqual(t.context.events, [['foo', 1, 2]]);
 		t.end();
 	}, 0);
 });
@@ -32,10 +32,10 @@ test.cb('immediate', t => {
 test.cb('timeout', t => {
 	t.plan(3);
 	fn(t.context, [['foo', 1, 2], ['bar', 4, 5]], {delay: 50});
-	setTimeout(() => t.same(t.context.events, []), 0);
-	setTimeout(() => t.same(t.context.events, [['foo', 1, 2]]), 55);
+	setTimeout(() => t.deepEqual(t.context.events, []), 0);
+	setTimeout(() => t.deepEqual(t.context.events, [['foo', 1, 2]]), 55);
 	setTimeout(() => {
-		t.same(t.context.events, [['foo', 1, 2], ['bar', 4, 5]]);
+		t.deepEqual(t.context.events, [['foo', 1, 2], ['bar', 4, 5]]);
 		t.end();
 	}, 120);
 });
@@ -99,7 +99,7 @@ test.cb('stop method', t => {
 	let stop = fn(t.context, [['foo'], ['bar']], (err, finished) => {
 		t.ifError(err);
 		t.false(finished);
-		t.same(t.context.events, [['foo']]);
+		t.deepEqual(t.context.events, [['foo']]);
 		t.end();
 	});
 	t.context.on('foo', stop);
